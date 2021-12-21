@@ -21,11 +21,10 @@ export function MealOption(meal) {
     return <></>;
   } else {
     const mealData = meal.meal.meals[0];
-    console.log(mealData);
     return (
       <MealOptionContainer>
         <h2>{JSON.stringify(mealData.strMeal)}</h2>
-        <img src={`${mealData.strMealThumb}`} style={{ maxWidth: "400px" }} />
+        <img src={`${mealData.strMealThumb}`} style={{ maxWidth: "500px" }} />
         <MealOptionInfo>
           <strong>
             {mealData.strArea} {mealData.strCategory}

@@ -4,6 +4,7 @@ import { Header } from "./components/Layout/Header";
 import { LikeButton } from "./components/Buttons/LikeButton";
 import { DislikeButton } from "./components/Buttons/DislikeButton";
 import { MealOption } from "./components/Meal/MealOption";
+import { MealDetails } from "./components/Meal/MealDetails";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -30,10 +31,25 @@ function App() {
     <>
       <Header />
       <MealOption meal={mealOption} />
-      <ButtonContainer>
-        <LikeButton onClick={() => setIsMealChosen(true)} />
-        <DislikeButton onClick={() => setOptionsCount(optionsCount + 1)} />
-      </ButtonContainer>
+      {isMealChosen && <MealDetails meal={mealOption} />}
+      {isMealChosen && (
+        <ButtonContainer>
+          <button
+            onClick={() => {
+              setIsMealChosen(false);
+              setOptionsCount(optionsCount + 1);
+            }}
+          >
+            I want something else!
+          </button>
+        </ButtonContainer>
+      )}
+      {!isMealChosen && (
+        <ButtonContainer>
+          <LikeButton onClick={() => setIsMealChosen(true)} />
+          <DislikeButton onClick={() => setOptionsCount(optionsCount + 1)} />
+        </ButtonContainer>
+      )}
     </>
   );
 }
