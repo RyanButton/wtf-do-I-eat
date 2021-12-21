@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Header } from "./components/Layout/Header";
+import { LikeButton } from "./components/Buttons/LikeButton";
+import { DislikeButton } from "./components/Buttons/DislikeButton";
+import { MealOption } from "./components/Meal/MealOption";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+ButtonContainer.displayName = "ButtonContainer";
 
 function App() {
+  const [mealOption, setMealOption] = useState([]);
+  const [isMealChosen, setIsMealChosen] = useState(false);
+  const [optionsCount, setOptionsCount] = useState(0);
+
+  useEffect(() => {
+    console.log(`options count: ${optionsCount}`);
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+      .then((response) => response.json())
+      .then((json) => setMealOption(json))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    console.log(`options count: ${optionsCount}`);
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+      .then((response) => response.json())
+      .then((json) => setMealOption(json))
+      .catch((err) => console.log(err));
+  }, [optionsCount]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <MealOption meal={mealOption} />
+      <ButtonContainer>
+        <LikeButton onClick={() => setIsMealChosen(true)} />
+        <DislikeButton onClick={() => setOptionsCount(optionsCount + 1)} />
+      </ButtonContainer>
+    </>
   );
 }
 
