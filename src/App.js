@@ -20,15 +20,6 @@ function App() {
   const [optionsCount, setOptionsCount] = useState(0);
 
   useEffect(() => {
-    console.log(`options count: ${optionsCount}`);
-    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
-      .then((response) => response.json())
-      .then((json) => setMealOption(json))
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    console.log(`options count: ${optionsCount}`);
     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
       .then((response) => response.json())
       .then((json) => setMealOption(json))
