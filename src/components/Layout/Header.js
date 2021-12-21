@@ -1,3 +1,3 @@
 export function Header() {
-  return <h1>WTF is for dinner?!</h1>;
+  return <h1>WTF do I eat?!</h1>;
 }
