@@ -1,3 +1,3 @@
-export function LikeButton() {
-  return <button>Like</button>;
+export function LikeButton({ onClick }) {
+  return <button onClick={() => onClick()}>I want that!</button>;
 }
