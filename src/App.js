@@ -39,6 +39,12 @@ function App() {
       <Header />
       <PageContainer>
         <MealOption meal={mealOption} />
+        {!isMealChosen && (
+          <ButtonContainer>
+            <LikeButton onClick={() => setIsMealChosen(true)} />
+            <DislikeButton onClick={() => setOptionsCount(optionsCount + 1)} />
+          </ButtonContainer>
+        )}
         {isMealChosen && <MealDetails meal={mealOption} />}
         {isMealChosen && (
           <ButtonContainer
@@ -50,12 +56,6 @@ function App() {
                 setOptionsCount(optionsCount + 1);
               }}
             />
-          </ButtonContainer>
-        )}
-        {!isMealChosen && (
-          <ButtonContainer>
-            <LikeButton onClick={() => setIsMealChosen(true)} />
-            <DislikeButton onClick={() => setOptionsCount(optionsCount + 1)} />
           </ButtonContainer>
         )}
       </PageContainer>
