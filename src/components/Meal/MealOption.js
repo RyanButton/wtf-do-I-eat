@@ -11,6 +11,8 @@ MealOptionContainer.displayName = "MealOptionContainer";
 
 const MealOptionInfo = styled.div`
   display: flex;
+  padding-top: 22px;
+  font-size: 22px;
   justify-content: center;
   align-items: center;
 `;
@@ -24,7 +26,7 @@ export function MealOption(meal) {
     return (
       <MealOptionContainer>
         <h2>{JSON.stringify(mealData.strMeal)}</h2>
-        <img src={`${mealData.strMealThumb}`} style={{ maxWidth: "500px" }} />
+        <img src={`${mealData.strMealThumb}`} className={"image"} />
         <MealOptionInfo>
           <strong>
             {mealData.strArea} {mealData.strCategory}

@@ -1,3 +1,7 @@
 export function DislikeButton({ onClick }) {
-  return <button onClick={() => onClick()}>Yuck NO</button>;
+  return (
+    <button className={"button"} onClick={() => onClick()}>
+      Yuck NO
+    </button>
+  );
 }

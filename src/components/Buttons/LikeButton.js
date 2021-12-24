@@ -1,3 +1,7 @@
 export function LikeButton({ onClick }) {
-  return <button onClick={() => onClick()}>I want that!</button>;
+  return (
+    <button className={"button"} onClick={() => onClick()}>
+      I want that!
+    </button>
+  );
 }

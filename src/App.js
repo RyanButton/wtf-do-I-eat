@@ -3,10 +3,17 @@ import "./App.css";
 import { Header } from "./components/Layout/Header";
 import { LikeButton } from "./components/Buttons/LikeButton";
 import { DislikeButton } from "./components/Buttons/DislikeButton";
+import { SomethingElseButton } from "./components/Buttons/SomethingElseButton";
 import { MealOption } from "./components/Meal/MealOption";
 import { MealDetails } from "./components/Meal/MealDetails";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+
+const PageContainer = styled.div`
+  background-color: #313030;
+  padding: 0 10% 5% 10%;
+`;
+PageContainer.displayName = "PageContainer";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -30,26 +37,28 @@ function App() {
   return (
     <>
       <Header />
-      <MealOption meal={mealOption} />
-      {isMealChosen && <MealDetails meal={mealOption} />}
-      {isMealChosen && (
-        <ButtonContainer>
-          <button
-            onClick={() => {
-              setIsMealChosen(false);
-              setOptionsCount(optionsCount + 1);
-            }}
+      <PageContainer>
+        <MealOption meal={mealOption} />
+        {isMealChosen && <MealDetails meal={mealOption} />}
+        {isMealChosen && (
+          <ButtonContainer
+            style={{ justifyContent: "left", alignItems: "left" }}
           >
-            I want something else!
-          </button>
-        </ButtonContainer>
-      )}
-      {!isMealChosen && (
-        <ButtonContainer>
-          <LikeButton onClick={() => setIsMealChosen(true)} />
-          <DislikeButton onClick={() => setOptionsCount(optionsCount + 1)} />
-        </ButtonContainer>
-      )}
+            <SomethingElseButton
+              onClick={() => {
+                setIsMealChosen(false);
+                setOptionsCount(optionsCount + 1);
+              }}
+            />
+          </ButtonContainer>
+        )}
+        {!isMealChosen && (
+          <ButtonContainer>
+            <LikeButton onClick={() => setIsMealChosen(true)} />
+            <DislikeButton onClick={() => setOptionsCount(optionsCount + 1)} />
+          </ButtonContainer>
+        )}
+      </PageContainer>
     </>
   );
 }
