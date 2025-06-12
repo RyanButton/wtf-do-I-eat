@@ -66,6 +66,8 @@ export function MealDetails(meal) {
                 className={"model"}
                 allow={"fullscreen"}
                 src={`${mealData.strYoutube.replace("watch?v=", "embed/")}`}
+                width={"100%"}
+                height={"100%"}
               ></iframe>
             </div>
           </div>
